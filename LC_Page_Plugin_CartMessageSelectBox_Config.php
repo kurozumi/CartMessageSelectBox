@@ -112,6 +112,12 @@ class LC_Page_Plugin_CartMessageSelectBox_Config extends LC_Page_Admin_Ex
 
         $objQuery = & SC_Query_Ex::getSingletonInstance();
         $this->arrMessage = $objQuery->select("message_id, message", "plg_cartmessage");
+        
+        /**
+         *  メッセージが登録されていない時はデフォルトが表示されるよう、
+         *  コンパイルファイルのクリア処理を毎回する
+         */
+        SC_Utils_Ex::clearCompliedTemplate();
 
     }
 

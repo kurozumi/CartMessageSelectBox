@@ -154,8 +154,10 @@ class CartMessageSelectBox extends SC_Plugin_Base
             case DEVICE_TYPE_PC:
                 $template_dir .= "default/";
                 if (strpos($filename, "shopping/payment.tpl") !== false) {
-                    $objTransform->select('.pay_area02', 1, false)->replaceElement(
+                    if ($objPage->arrCartMessage) {
+                        $objTransform->select('.pay_area02', 1, false)->replaceElement(
                             file_get_contents($template_dir . "shopping/payment.tpl"));
+                    }
                 }
                 break;
             case DEVICE_TYPE_MOBILE:
